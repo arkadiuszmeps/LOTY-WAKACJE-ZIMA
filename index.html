@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#102443">
+
+<title>Rybnik Flight Scout</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#f2f5fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+
+header{background:#102443;color:white;padding:28px 20px}
+
+header h1{margin:0 0 8px;font-size:26px}
+
+header p{margin:0;color:#d3e0f5;line-height:1.5}
+
+main{max-width:720px;margin:auto;padding:18px}
+
+.card{background:white;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 4px 18px #1024430d}
+
+h2{font-size:19px;margin:0 0 14px}
+
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 6px}
+
+select,input{width:100%;padding:13px;border:1px solid #ccd5e2;border-radius:10px;background:white;font-size:16px;color:#172033}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+button{width:100%;padding:14px;border:0;border-radius:11px;background:#175cd3;color:white;font-size:16px;font-weight:700;margin-top:16px}
+
+.secondary{background:#e9f0fc;color:#17468f}
+
+.note{font-size:13px;color:#64748b;line-height:1.5}
+
+.pill{display:inline-block;background:#e8f7ee;color:#17663a;padding:5px 9px;border-radius:20px;font-size:12px;font-weight:700}
+
+li{margin:8px 0}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>✈️ Rybnik Flight Scout</h1>
+
+  <p>Łowca tanich lotów na ferie zimowe 2027 dla całej rodziny.</p>
+
+</header>
+
+<main>
+
+  <section class="card">
+
+    <span class="pill">WERSJA 1 · BEZPŁATNA</span>
+
+    <h2 style="margin-top:14px">Znajdź loty</h2>
+
+    <p class="note">Wybierz lotnisko, kierunek i daty. Otworzymy wyszukiwanie w Google Flights.</p>
+
+    <label for="airport">Lotnisko wylotu</label>
+
+    <select id="airport">
+
+      <option value="KTW">Katowice (KTW)</option>
+
+      <option value="KRK">Kraków (KRK)</option>
+
+      <option value="OSR">Ostrawa (OSR)</option>
+
+      <option value="WRO">Wrocław (WRO)</option>
+
+      <option value="WAW">Warszawa Chopina (WAW)</option>
+
+      <option value="VIE">Wiedeń (VIE)</option>
+
+    </select>
+
+    <label for="destination">Kierunek</label>
+
+    <select id="destination">
+
+      <option value="Alicante">Alicante, Hiszpania</option>
+
+      <option value="Malaga">Malaga, Hiszpania</option>
+
+      <option value="Tenerife">Teneryfa, Wyspy Kanaryjskie</option>
+
+      <option value="Gran Canaria">Gran Canaria</option>
+
+      <option value="Fuerteventura">Fuerteventura</option>
+
+      <option value="Malta">Malta</option>
+
+      <option value="Larnaca">Larnaka, Cypr</option>
+
+      <option value="Athens">Ateny, Grecja</option>
+
+      <option value="Hurghada">Hurghada, Egipt</option>
+
+      <option value="Marrakech">Marrakesz, Maroko</option>
+
+      <option value="Faro">Faro, Portugalia</option>
+
+      <option value="Catania">Katania, Sycylia</option>
+
+    </select>
+
+    <div class="grid">
+
+      <div>
+
+        <label for="depart">Data wylotu</label>
+
+        <input id="depart" type="date" value="2027-01-18">
+
+      </div>
+
+      <div>
+
+        <label for="back">Data powrotu</label>
+
+        <input id="back" type="date" value="2027-01-28">
+
+      </div>
+
+    </div>
+
+    <label for="duration">Długość pobytu</label>
+
+    <select id="duration">
+
+      <option value="7">7 dni</option>
+
+      <option value="10" selected>10 dni</option>
+
+      <option value="14">14 dni</option>
+
+    </select>
+
+    <button onclick="searchFlights()">Szukaj wybranego kierunku ↗</button>
+
+    <button class="secondary" onclick="searchAll()">Przygotuj wyszukiwania kierunków</button>
+
+    <p class="note">Dla 2 dorosłych i 2 dzieci. W Google Flights ustaw liczbę pasażerów, sprawdź maksymalnie 1 przesiadkę oraz dolicz bagaż rejestrowany.</p>
+
+  </section>
+
+  <section class="card">
+
+    <h2>🎯 Kryteria naszej podróży</h2>
+
+    <ul>
+
+      <li>Ferie śląskie: 18–31 stycznia 2027</li>
+
+      <li>Elastyczne daty: około 16 stycznia – 2 lutego</li>
+
+      <li>Pobyt: 7–14 dni</li>
+
+      <li>Lotniska w zasięgu do 400 km od Rybnika</li>
+
+      <li>Ranking według całkowitej ceny dla rodziny</li>
+
+    </ul>
+
+  </section>
+
+  <section class="card">
+
+    <h2>ℹ️ Uczciwie o tej wersji</h2>
+
+    <p class="note">To bezpłatny panel startowy. Otwiera wyszukiwania w zewnętrznej wyszukiwarce, ale sam nie pobiera ani nie zapisuje cen, nie sprawdza automatycznie bagażu i nie uruchamia codziennych zadań w tle. Ceny i dostępność należy potwierdzić u przewoźnika.</p>
+
+  </section>
+
+</main>
+
+<script>
+
+function getDates(){
+
+  const depart=document.getElementById('depart').value;
+
+  const back=document.getElementById('back').value;
+
+  if(!depart||!back||back<=depart){
+
+    alert('Wybierz prawidłowe daty wylotu i powrotu.');
+
+    return null;
+
+  }
+
+  return {depart,back};
+
+}
+
+function makeUrl(airport,destination,depart,back){
+
+  const q=`Flights from ${airport} to ${destination} departing ${depart} returning ${back}`;
+
+  return 'https://www.google.com/travel/flights?q='+encodeURIComponent(q);
+
+}
+
+function searchFlights(){
+
+  const dates=getDates();
+
+  if(!dates)return;
+
+  const airport=document.getElementById('airport').value;
+
+  const destination=document.getElementById('destination').value;
+
+  window.location.href=makeUrl(airport,destination,dates.depart,dates.back);
+
+}
+
+function searchAll(){
+
+  const dates=getDates();
+
+  if(!dates)return;
+
+  const airport=document.getElementById('airport').value;
+
+  const destinations=['Alicante','Malaga','Tenerife','Gran Canaria','Fuerteventura','Malta','Larnaca','Hurghada','Marrakech'];
+
+  const links=destinations.map(d=>makeUrl(airport,d,dates.depart,dates.back));
+
+  const message='Skopiuj linki i otwieraj je kolejno. Safari może blokować otwieranie wielu kart naraz:\n\n'+links.join('\n\n');
+
+  const w=window.open('','_blank');
+
+  if(w){
+
+    w.document.write('<meta name="viewport" content="width=device-width, initial-scale=1"><title>Kierunki do sprawdzenia</title><h2>Wyszukiwania lotów</h2><p>Otwieraj każdy kierunek osobno:</p><ol>'+destinations.map((d,i)=>'<li><a target="_blank" href="'+links[i]+'">'+d+'</a></li>').join('')+'</ol>');
+
+    w.document.close();
+
+  }else{
+
+    alert(message);
+
+  }
+
+}
+
+document.getElementById('duration').addEventListener('change',function(){
+
+  const depart=document.getElementById('depart').value;
+
+  if(!depart)return;
+
+  const date=new Date(depart+'T12:00:00');
+
+  date.setDate(date.getDate()+Number(this.value));
+
+  document.getElementById('back').value=date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');
+
+});
+
+</script>
+
+</body>
+
+</html>
